@@ -1,7 +1,7 @@
 ---
 title: MacOS中的Rootless机制
 categories:
-  - Mac
+  - MacOS
 tags:
   - Rootless
 abbrlink: 8714

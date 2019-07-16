@@ -1,6 +1,6 @@
 ---
 title: Linux系统下SSH命令的使用
-tags:
+tags: 
   - Linux
   - SSH
 categories:
