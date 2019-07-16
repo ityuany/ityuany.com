@@ -9,7 +9,7 @@ abbrlink: 56803
 date: 2019-07-15 11:16:19
 ---
 
-![](https://ityuany.oss-cn-hangzhou.aliyuncs.com/blogs/timg.jpeg?x-oss-process=style/d)
+![](https://ityuany.oss-cn-hangzhou.aliyuncs.com/blogs/timg.jpeg?x-oss-process=style/Blogs)
 
 <!-- more -->
 
