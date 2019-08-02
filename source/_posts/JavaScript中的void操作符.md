@@ -1,9 +1,11 @@
 ---
 title: JavaScript中的void操作符
-tags: []
+tags:
+  - JavaScript
 abbrlink: 15721
 date: 2019-08-02 11:28:14
 categories:
+  - JavaScript
 ---
 
 ![](https://ityuany.oss-cn-hangzhou.aliyuncs.com/blogs/void.jpg?x-oss-process=style/Blogs)
