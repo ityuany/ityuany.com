@@ -28,4 +28,7 @@ jobs:
       - name: install node_modules
         run: |
           npm install
+      - name: build
+        run: |
+          hexo generate
 
