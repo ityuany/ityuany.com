@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>MacOS文件夹多语言显示设置 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是多语言显示？比如我们在 Finder 中看到的桌面、下载等中文描述的文件夹，实际上我们在执行终端命令的时候，我们会发现它都是英文的。 怎么实现？ 授权  进入系统目录         cd &#x2F;System&#x2F;Library&#x2F;CoreServices&#x2F;SystemFolderLocalizations&#x2F;zh_CN.lproj      授权         sudo chmod -R 777 *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacOS文件夹多语言显示设置">
+<meta property="og:url" content="http://ityuany.com/2019/07/16/MacOS%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是多语言显示？比如我们在 Finder 中看到的桌面、下载等中文描述的文件夹，实际上我们在执行终端命令的时候，我们会发现它都是英文的。 怎么实现？ 授权  进入系统目录         cd &#x2F;System&#x2F;Library&#x2F;CoreServices&#x2F;SystemFolderLocalizations&#x2F;zh_CN.lproj      授权         sudo chmod -R 777 *">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-16T13:17:48.000Z">
+<meta property="article:modified_time" content="2020-09-20T11:38:58.572Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="多语言">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ityuany.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MacOS文件夹多语言显示设置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/16/MacOS%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE/" class="article-date">
+  <time datetime="2019-07-16T13:17:48.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MacOS/">MacOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MacOS文件夹多语言显示设置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是多语言显示？"><a href="#什么是多语言显示？" class="headerlink" title="什么是多语言显示？"></a>什么是多语言显示？</h1><p>比如我们在 Finder 中看到的桌面、下载等中文描述的文件夹，实际上我们在执行终端命令的时候，我们会发现它都是英文的。</p>
+<h1 id="怎么实现？"><a href="#怎么实现？" class="headerlink" title="怎么实现？"></a>怎么实现？</h1><ul>
+<li><p>授权</p>
+<ul>
+<li><p>进入系统目录</p>
+<pre><code>        cd /System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>授权</p>
+<pre><code>        sudo chmod -R 777 *</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>转换格式</p>
+<pre><code>文件本身的格式是二进制，所以需要转换为可读的文件进行修改，以下两种方式根据自己的习惯可选。</code></pre>
+<ul>
+<li><p>转化为 JSON 文件<br>plutil -convert json SystemFolderLocalizations.strings</p>
+</li>
+<li><p>转化为 XML 文件</p>
+<pre><code>        plutil -convert xml1 SystemFolderLocalizations.strings</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>添加配置</p>
+<pre><code>        这里不做详细解释，配置文件转换格式之后基本上都能看的明白怎么添加配置</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>转换格式</p>
+<pre><code>        格式再转回二进制：plutil -convert binary1 SystemFolderLocalizations.strings</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>添加文件</p>
+<pre><code>        去你配置了多语言的文件夹下新增 .localized 空文件， 表示该文件夹需要支持多语言。</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>重启 Finder</p>
+<pre><code>        执行命令：pkill Finder</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ityuany.com/2019/07/16/MacOS%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE/" data-id="ckfsh1gse000im7yc3a6q8s5b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" rel="tag">多语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/02/JavaScript%E4%B8%AD%E7%9A%84void%E6%93%8D%E4%BD%9C%E7%AC%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript中的void操作符
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/16/MacOS%E4%B8%AD%E7%9A%84Rootless%E6%9C%BA%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MacOS中的Rootless机制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MacOS/">MacOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rootless/" rel="tag">Rootless</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" rel="tag">多语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Rootless/" style="font-size: 10px;">Rootless</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">多语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/03/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/02/JavaScript%E4%B8%AD%E7%9A%84void%E6%93%8D%E4%BD%9C%E7%AC%A6/">JavaScript中的void操作符</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/MacOS%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE/">MacOS文件夹多语言显示设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/MacOS%E4%B8%AD%E7%9A%84Rootless%E6%9C%BA%E5%88%B6/">MacOS中的Rootless机制</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BSSH%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">Linux系统下SSH命令的使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
