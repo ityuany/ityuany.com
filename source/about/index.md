@@ -26,6 +26,7 @@ date: 2020-10-03 00:48:45
 - [runcat](https://kyome.io/runcat/index.html?lang=en) 小猫跑跑、显示 CPU 负荷量。
 - [frp](https://github.com/fatedier/frp) 一个高性能反向代理服务器，可以帮助你将本地服务器暴露在 NAT 或者防火墙之后。
 - [gridea](https://github.com/getgridea/gridea) 类似于 GUI 版本的 hexo ，我自己不用，不过有点意思。
+- [DockStation](https://dockstation.io/) 基于 eletron 的 docker gui
 
 # react 生态
 
