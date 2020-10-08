@@ -54,6 +54,7 @@ date: 2020-10-03 00:48:45
 - [fx](https://github.com/antonmedv/fx) 交互式 json 查看。
 - [qrcode-terminal](https://github.com/gtanner/qrcode-terminal) 二维码生成
 - [concurrently](https://github.com/kimmobrunfeldt/concurrently) 在 npm scripts 里并行执行命令。
+- [jscpd](https://github.com/kucherenko/jscpd) 代码质量分析，主要是通过分析代码重复率来判定代码质量，我自己没有用过
 
 # Markdown
 
