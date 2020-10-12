@@ -39,6 +39,7 @@ date: 2020-10-03 00:48:45
 - [superagent](https://github.com/visionmedia/superagent) 轻量级的渐进式 ajax API，在对许多现有的请求 API 感到沮丧之后，它具有灵活性、可读性和较低的学习曲线。
 - [xterm.js](https://github.com/xtermjs/xterm.js) 在网页上的终端工具。
 - [path-to-regexp](https://github.com/pillarjs/path-to-regexp) 路由的匹配库，vue、react 的 router 基本上都是基于它实现的。
+- [driver.js](https://github.com/kamranahmedse/driver.js) 一个专门用来做新功能引导的 库
 
 # Node 工具库
 
