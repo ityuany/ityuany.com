@@ -67,3 +67,7 @@ date: 2020-10-03 00:48:45
 # Java 好用的好东西
 
 - [mapstruct](https://github.com/mapstruct/mapstruct) 更好的通过编译层来解决 copy properties。
+
+# typescript
+
+- [ts-toolbelt](https://github.com/millsp/ts-toolbelt) ts 类型工具类
