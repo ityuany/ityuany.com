@@ -1,0 +1,274 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>【Babel插件】访问器 | 深夜食堂</title>
+<link rel="shortcut icon" href="https://ityuany.com/favicon.ico?v=1645370880095">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://ityuany.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【Babel插件】访问器 | 深夜食堂 - Atom Feed" href="https://ityuany.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="访问器是什么 🤔
+babel 在解析语法树的过程中，会去不停的循环 estree 的所有节点 ， 而访问器指的是去定义这些 estree的节点的处理函数，用来做语法上的转义。
+
+import babelCore from '@babel/..." />
+    <meta name="keywords" content="Babel插件" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://ityuany.com">
+  <img class="avatar" src="https://ityuany.com/images/avatar.png?v=1645370880095" alt="">
+  </a>
+  <h1 class="site-title">
+    深夜食堂
+  </h1>
+  <p class="site-description">
+    落霞与孤鹜齐飞、秋水共长天一色
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【Babel插件】访问器
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-02-20
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://ityuany.com/tag/tH9moCUe3/" class="post-tag">
+                  # Babel插件
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://ityuany.com/post-images/babel-cha-jian-fang-wen-qi.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="访问器是什么">访问器是什么 🤔</h2>
+<p><a href="https://babeljs.io/"><code>babel</code></a> 在解析语法树的过程中，会去不停的循环 <a href="https://github.com/estree/estree"><code>estree</code></a> 的所有节点 ， 而访问器指的是去定义这些 <a href="https://github.com/estree/estree"><code>estree</code></a>的节点的处理函数，用来做语法上的转义。</p>
+<pre><code class="language-js">
+import babelCore from '@babel/core';
+import nodePath from 'path';
+
+const CSS_EXTNAMES = ['.css', '.less', '.sass', '.scss'];
+
+export default function (babel) {
+  return {
+    name: 'autoCssModules',
+    visitor: {
+      ImportDeclaration(path) {
+        const specifiers = path.get('specifiers');
+        const source = path.get('source');
+        if (
+          specifiers.length &amp;&amp;
+          CSS_EXTNAMES.includes(nodePath.extname(source.node.value))
+        ) {
+          source.replaceWith(
+            babel.types.stringLiteral(`${source.node.value}?modules`),
+          );
+        }
+      },
+    },
+  };
+}
+
+</code></pre>
+<h2 id="访问器也是有切面的">访问器也是有切面的 🤡</h2>
+<p>每一个访问器都是存在 <code>enter</code>、<code>exit</code> 两个切面的，可以有选择性的选择在其中的某一个切面做某些事。</p>
+<pre><code class="language-js">export default function (){
+    return {
+        visitor:{
+            ImportDeclaration:{
+                enter(){
+                    // some thing
+                },
+                exit(){
+                    // some thing
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="单个插件对象的全局属性">单个插件对象的全局属性</h2>
+<p>在访问器中，我们可以动态的往全局的this上面<code>挂载</code>、<code>修正</code>一些全局属性。用作单个插件的所有访问器共享。</p>
+<pre><code class="language-js">export default function (){
+    return {
+        Program:{
+            enter(){
+                this.enableHoc = true;
+                // do some thing
+            }
+        },
+        ImportDeclaration(){
+            // do some thing
+            if(this.enableHoc){
+                // do some thing
+            }else{
+                this.enableHoc = &quot;xxxx&quot;
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="巧用访问器的切面">巧用访问器的切面</h2>
+<p>在某些业务场景下，我们尽可能的去巧妙的运用访问器的切面，从而去规避一些<code>性能低效</code>或<code>逻辑冗余</code>。</p>
+<pre><code class="language-js">export default function (){
+    return {
+        Program:{
+            enter(){
+                this.inspectorHocName = undefined
+                // do some thing
+            },
+            exit(){
+                if(this.inspectorHocName){
+                    // do some thing
+                }
+                // do some thing
+            }
+        },
+        ImportDeclaration(){
+            // do some thing
+            this.inspectorHocName = &quot;xxxxxxx&quot;
+            // do some thing
+        }
+    }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%AE%BF%E9%97%AE%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88">访问器是什么 🤔</a></li>
+<li><a href="#%E8%AE%BF%E9%97%AE%E5%99%A8%E4%B9%9F%E6%98%AF%E6%9C%89%E5%88%87%E9%9D%A2%E7%9A%84">访问器也是有切面的 🤡</a></li>
+<li><a href="#%E5%8D%95%E4%B8%AA%E6%8F%92%E4%BB%B6%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%A8%E5%B1%80%E5%B1%9E%E6%80%A7">单个插件对象的全局属性</a></li>
+<li><a href="#%E5%B7%A7%E7%94%A8%E8%AE%BF%E9%97%AE%E5%99%A8%E7%9A%84%E5%88%87%E9%9D%A2">巧用访问器的切面</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://ityuany.com/post/macos-zhong-de-rootless-ji-zhi/">
+              <h3 class="post-title">
+                MacOS中的Rootless机制
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://ityuany.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

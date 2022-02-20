@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ityuany.com</id>
     <title>深夜食堂</title>
-    <updated>2022-02-20T06:03:15.584Z</updated>
+    <updated>2022-02-20T15:28:03.619Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ityuany.com"/>
     <link rel="self" href="https://ityuany.com/atom.xml"/>
@@ -10,6 +10,105 @@
     <logo>https://ityuany.com/images/avatar.png</logo>
     <icon>https://ityuany.com/favicon.ico</icon>
     <rights>All rights reserved 2022, 深夜食堂</rights>
+    <entry>
+        <title type="html"><![CDATA[【Babel插件】访问器]]></title>
+        <id>https://ityuany.com/post/babel-cha-jian-fang-wen-qi/</id>
+        <link href="https://ityuany.com/post/babel-cha-jian-fang-wen-qi/">
+        </link>
+        <updated>2022-02-20T14:31:47.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="访问器是什么">访问器是什么 🤔</h2>
+<p><a href="https://babeljs.io/"><code>babel</code></a> 在解析语法树的过程中，会去不停的循环 <a href="https://github.com/estree/estree"><code>estree</code></a> 的所有节点 ， 而访问器指的是去定义这些 <a href="https://github.com/estree/estree"><code>estree</code></a>的节点的处理函数，用来做语法上的转义。</p>
+<pre><code class="language-js">
+import babelCore from '@babel/core';
+import nodePath from 'path';
+
+const CSS_EXTNAMES = ['.css', '.less', '.sass', '.scss'];
+
+export default function (babel) {
+  return {
+    name: 'autoCssModules',
+    visitor: {
+      ImportDeclaration(path) {
+        const specifiers = path.get('specifiers');
+        const source = path.get('source');
+        if (
+          specifiers.length &amp;&amp;
+          CSS_EXTNAMES.includes(nodePath.extname(source.node.value))
+        ) {
+          source.replaceWith(
+            babel.types.stringLiteral(`${source.node.value}?modules`),
+          );
+        }
+      },
+    },
+  };
+}
+
+</code></pre>
+<h2 id="访问器也是有切面的">访问器也是有切面的 🤡</h2>
+<p>每一个访问器都是存在 <code>enter</code>、<code>exit</code> 两个切面的，可以有选择性的选择在其中的某一个切面做某些事。</p>
+<pre><code class="language-js">export default function (){
+    return {
+        visitor:{
+            ImportDeclaration:{
+                enter(){
+                    // some thing
+                },
+                exit(){
+                    // some thing
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="单个插件对象的全局属性">单个插件对象的全局属性</h2>
+<p>在访问器中，我们可以动态的往全局的this上面<code>挂载</code>、<code>修正</code>一些全局属性。用作单个插件的所有访问器共享。</p>
+<pre><code class="language-js">export default function (){
+    return {
+        Program:{
+            enter(){
+                this.enableHoc = true;
+                // do some thing
+            }
+        },
+        ImportDeclaration(){
+            // do some thing
+            if(this.enableHoc){
+                // do some thing
+            }else{
+                this.enableHoc = &quot;xxxx&quot;
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="巧用访问器的切面">巧用访问器的切面</h2>
+<p>在某些业务场景下，我们尽可能的去巧妙的运用访问器的切面，从而去规避一些<code>性能低效</code>或<code>逻辑冗余</code>。</p>
+<pre><code class="language-js">export default function (){
+    return {
+        Program:{
+            enter(){
+                this.inspectorHocName = undefined
+                // do some thing
+            },
+            exit(){
+                if(this.inspectorHocName){
+                    // do some thing
+                }
+                // do some thing
+            }
+        },
+        ImportDeclaration(){
+            // do some thing
+            this.inspectorHocName = &quot;xxxxxxx&quot;
+            // do some thing
+        }
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MacOS中的Rootless机制]]></title>
         <id>https://ityuany.com/post/macos-zhong-de-rootless-ji-zhi/</id>
