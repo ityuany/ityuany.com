@@ -2,24 +2,24 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | 深夜食堂</title>
+<title>MacOS中的Rootless机制 | 深夜食堂</title>
 <link rel="shortcut icon" href="https://ityuany.com/favicon.ico?v=1645333225654">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ityuany.com/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 | 深夜食堂 - Atom Feed" href="https://ityuany.com/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="MacOS中的Rootless机制 | 深夜食堂 - Atom Feed" href="https://ityuany.com/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
+    <meta name="description" content="是什么？
+Mac OS X EL Capitan 10.11 版本的操作系统开始使用 Rootless 机制，这玩意主要就是限制了不允许用户针对以下 3 个目录的文件进行修改操作
 
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
-    <meta name="keywords" content="" />
+/system
+/sbin
+/usr
+
+怎么开关 Root..." />
+    <meta name="keywords" content="MacOS" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -81,37 +81,52 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              MacOS中的Rootless机制
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2022-02-20
               </span>
               <span>
                 1 min read
               </span>
               
+                <a href="https://ityuany.com/tag/FJfssJ8wO/" class="post-tag">
+                  # MacOS
+                </a>
+              
             </div>
+            
+              <img class="post-feature-image" src="https://ityuany.com/post-images/macos-zhong-de-rootless-ji-zhi.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+                <h2 id="是什么">是什么？</h2>
+<p>Mac OS X EL Capitan 10.11 版本的操作系统开始使用 Rootless 机制，这玩意主要就是限制了不允许用户针对以下 3 个目录的文件进行修改操作</p>
+<ul>
+<li>/system</li>
+<li>/sbin</li>
+<li>/usr</li>
+</ul>
+<h2 id="怎么开关-rootless-机制">怎么开关 Rootless 机制？</h2>
+<p>重启 Mac , 听到开机启动声之后按下 command + R 进入恢复模式，在实用工具中打开 Termial(终端工具)</p>
+<ul>
+<li>关闭 Rootless<pre><code class="language-bash">  csrutil disable
+</code></pre>
+</li>
+<li>开启 Rootless<pre><code class="language-bash">  csrutil enable
+</code></pre>
+</li>
+</ul>
+<p>回车、重启、生效</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88">是什么？</a></li>
+<li><a href="#%E6%80%8E%E4%B9%88%E5%BC%80%E5%85%B3-rootless-%E6%9C%BA%E5%88%B6">怎么开关 Rootless 机制？</a></li>
 </ul>
 </li>
 </ul>
@@ -121,6 +136,15 @@
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://ityuany.com/post/linux-xi-tong-xia-ssh-ming-ling-de-shi-yong/">
+              <h3 class="post-title">
+                Linux系统下SSH命令的使用
+              </h3>
+            </a>
+          </div>
         
 
         
